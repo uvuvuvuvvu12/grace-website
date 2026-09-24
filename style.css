@@ -2,12 +2,16 @@
 :root {
   --bg-deep: #fff2f5;
   --bg-panel: #fbdfe6;
-  --ink: #6b2f42;
-  --ink-dim: #a1596f;
+  --ink: #4b1b2a;
+  --ink-dim: #6d1f36;
   --gold: #e0a9a1;
   --rose: #e8879f;
   --rose-deep: #c85277;
   --line: rgba(107, 47, 66, 0.14);
+
+  /* sunflower accent tones */
+  --sun-petal: #f6c343;
+  --sun-center: #7a4a24;
 
   --serif: "Fraunces", Georgia, serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -27,6 +31,11 @@ body {
   font-family: var(--sans);
   line-height: 1.6;
   overflow-x: hidden;
+  background-image: url('images/bg.jpg');
+  background-size: fill;
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 img { max-width: 100%; display: block; }
@@ -53,6 +62,11 @@ img { max-width: 100%; display: block; }
   animation: fall linear infinite, sway ease-in-out infinite;
 }
 
+/* sunflower petals get a slow lazy spin as they drift down */
+.petal--sunflower {
+  animation: fall linear infinite, sway ease-in-out infinite, spin linear infinite;
+}
+
 @keyframes fall {
   from { transform: translateY(-10vh); }
   to   { transform: translateY(110vh); }
@@ -61,6 +75,11 @@ img { max-width: 100%; display: block; }
 @keyframes sway {
   0%, 100% { margin-left: 0; }
   50%      { margin-left: 40px; }
+}
+
+@keyframes spin {
+  from { rotate: 0deg; }
+  to   { rotate: 360deg; }
 }
 
 /* ===== Decorative flowers ===== */
@@ -75,6 +94,30 @@ img { max-width: 100%; display: block; }
 .flora-corner-tl { top: -10px; left: -6px; width: 64px; height: 64px; transform: scaleX(-1); }
 .flora-corner-tr { top: -10px; right: -6px; width: 64px; height: 64px; }
 
+/* a small sunflower that gently tilts back and forth, like it's
+   following the sun — sits just under the hero subtext */
+.flora-sunflower {
+  position: relative;
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1.5rem auto 0;
+  transform-origin: 50% 85%;
+  animation: sun-sway 6s ease-in-out infinite;
+  opacity: 0;
+  filter: drop-shadow(0 2px 3px rgba(107,47,66,.15));
+}
+
+.hero .flora-sunflower {
+  animation: rise .9s ease forwards, sun-sway 6s ease-in-out infinite 1.1s;
+  animation-delay: 1.05s, 2s;
+}
+
+@keyframes sun-sway {
+  0%, 100% { rotate: -6deg; }
+  50%      { rotate: 6deg; }
+}
+
 .divider {
   display: block;
   color: var(--rose);
@@ -82,6 +125,11 @@ img { max-width: 100%; display: block; }
   width: 40px;
   height: 40px;
   opacity: .85;
+}
+
+.divider-sunflower {
+  width: 44px;
+  height: 44px;
 }
 
 .photo-sprig {
@@ -146,7 +194,7 @@ img { max-width: 100%; display: block; }
 
 .hero-sub {
   font-size: 1.05rem;
-  color: var(--ink-dim);
+  color: var(--ink);
   max-width: 30ch;
   margin-top: 1.25rem;
   opacity: 0;
@@ -235,7 +283,7 @@ main {
 
 .story-text p {
   font-size: clamp(1.05rem, 2vw, 1.2rem);
-  color: var(--ink-dim);
+  color: var(--ink);
   max-width: 34ch;
   margin: 0;
 }
@@ -351,8 +399,8 @@ main {
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-eyebrow, .hero-title span, .hero-sub, .hero-scroll {
-    animation: none; opacity: 1; filter: none; transform: none;
+  .hero-eyebrow, .hero-title span, .hero-sub, .hero-scroll, .flora-sunflower {
+    animation: none; opacity: 1; filter: none; transform: none; rotate: 0deg;
   }
   .hero-scroll span { animation: none; opacity: 1; top: 0; }
   .photo { transform: none !important; }

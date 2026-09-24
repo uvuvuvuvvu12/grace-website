@@ -34,29 +34,55 @@ const prefersReducedMotion = window.matchMedia(
 ).matches;
 
 // A few soft petals drifting down the page, for atmosphere.
+// EDIT: set exactly how many of each flower you want falling.
+const SUNFLOWER_COUNT = 16;   // number of sunflowers
+const BLOSSOM_COUNT = 14;     // number of blossoms
+
 if (!prefersReducedMotion) {
   const field = document.getElementById("petal-field");
-  const PETAL_COUNT = 10;
 
-  for (let i = 0; i < PETAL_COUNT; i++) {
+  // Build one flat list: `true` = sunflower, `false` = blossom, then
+  // shuffle it so they don't all fall in two separate clumps.
+  const petalTypes = [
+    ...Array(SUNFLOWER_COUNT).fill(true),
+    ...Array(BLOSSOM_COUNT).fill(false),
+  ];
+  for (let i = petalTypes.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [petalTypes[i], petalTypes[j]] = [petalTypes[j], petalTypes[i]];
+  }
+
+  petalTypes.forEach((isSunflower) => {
     const petal = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     petal.classList.add("petal");
-    petal.setAttribute("viewBox", "0 0 64 64");
-    petal.innerHTML = '<use href="#flower-blossom"></use>';
+    if (isSunflower) petal.classList.add("petal--sunflower");
 
-    const size = 10 + Math.random() * 14;
+    petal.setAttribute("viewBox", isSunflower ? "0 0 100 100" : "0 0 64 64");
+    petal.innerHTML = isSunflower
+      ? '<use href="#flower-sunflower"></use>'
+      : '<use href="#flower-blossom"></use>';
+
+    const size = 30 + Math.random() * 14;
     petal.style.width = `${size}px`;
     petal.style.height = `${size}px`;
     petal.style.left = `${Math.random() * 100}vw`;
-    petal.style.color = Math.random() > 0.5 ? "#e8879f" : "#f3b7c6";
+    if (!isSunflower) {
+      petal.style.color = Math.random() > 0.5 ? "#e8879f" : "#f3b7c6";
+    }
 
     const fallDuration = 14 + Math.random() * 10;
     const swayDuration = 3 + Math.random() * 2;
-    petal.style.animationDuration = `${fallDuration}s, ${swayDuration}s`;
-    petal.style.animationDelay = `${Math.random() * -fallDuration}s, ${Math.random() * -swayDuration}s`;
+    const spinDuration = 6 + Math.random() * 6;
+
+    petal.style.animationDuration = isSunflower
+      ? `${fallDuration}s, ${swayDuration}s, ${spinDuration}s`
+      : `${fallDuration}s, ${swayDuration}s`;
+    petal.style.animationDelay = isSunflower
+      ? `${Math.random() * -fallDuration}s, ${Math.random() * -swayDuration}s, ${Math.random() * -spinDuration}s`
+      : `${Math.random() * -fallDuration}s, ${Math.random() * -swayDuration}s`;
 
     field.appendChild(petal);
-  }
+  });
 }
 
 if (!prefersReducedMotion) {

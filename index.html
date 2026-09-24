@@ -41,6 +41,36 @@
     <use href="#flower-blossom" x="-24" y="16" width="20" height="20"/>
     <use href="#flower-blossom" x="30" y="8" width="18" height="18"/>
   </symbol>
+  <!-- EDIT: her favorite flower — used in the hero, some notes, the
+       closing divider, and mixed into the falling petals -->
+  <symbol id="flower-sunflower" viewBox="0 0 100 100">
+    <g fill="#f6c343">
+      <ellipse cx="50" cy="16" rx="7" ry="15"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(30 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(60 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(90 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(120 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(150 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(180 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(210 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(240 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(270 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(300 50 50)"/>
+      <ellipse cx="50" cy="16" rx="7" ry="15" transform="rotate(330 50 50)"/>
+    </g>
+    <circle cx="50" cy="50" r="17" fill="#7a4a24"/>
+    <g fill="#5e3a1c" opacity=".55">
+      <circle cx="44" cy="44" r="1.6"/>
+      <circle cx="56" cy="44" r="1.6"/>
+      <circle cx="50" cy="50" r="1.6"/>
+      <circle cx="44" cy="56" r="1.6"/>
+      <circle cx="56" cy="56" r="1.6"/>
+      <circle cx="50" cy="41" r="1.6"/>
+      <circle cx="50" cy="59" r="1.6"/>
+      <circle cx="41" cy="50" r="1.6"/>
+      <circle cx="59" cy="50" r="1.6"/>
+    </g>
+  </symbol>
 </svg>
 
 <div class="stars" aria-hidden="true"></div>
@@ -53,11 +83,13 @@
   <p class="hero-eyebrow">a little something,</p>
   <h1 class="hero-title">
     <span>for you,</span>
-    <span class="hero-title-italic">just because.</span>
+    <span class="hero-title-italic">Mary Grace</span>
   </h1>
   <!-- EDIT: change this line to whatever you want to say first -->
   <p class="hero-sub">No reason, no occasion — just you, and how much
   you're loved.</p>
+  <svg class="flora-sunflower" viewBox="0 0 100 100" aria-hidden="true"><use href="#flower-sunflower"/></svg>
+  <img src="images/cute.gif" loading="lazy" width="150" height="150" style="margin-top: 1rem;">
   <div class="hero-scroll" aria-hidden="true">
     <span></span>
   </div>
@@ -72,8 +104,8 @@
     </figure>
     <div class="story-text reveal">
       <!-- EDIT: caption for photo 1 -->
-      <p>This is one of my favorites of you. I don't even remember what was
-      so funny, just that I couldn't stop looking at it after.</p>
+      <p>I just want you to know that I really enjoy having you in my life. Talking to you, 
+        even about the simplest things, somehow makes my day better.</p>
     </div>
   </section>
 
@@ -84,8 +116,8 @@
     </figure>
     <div class="story-text reveal">
       <!-- EDIT: caption for photo 2 -->
-      <p>You have this way of making an ordinary afternoon feel like
-      something worth remembering. I don't think you know you do that.</p>
+      <p>You have this little way of making me smile without even trying. I don't know where this is going yet, 
+        but I'm really happy that I get to know you more every day.</p>
     </div>
   </section>
 
@@ -96,8 +128,8 @@
     </figure>
     <div class="story-text reveal">
       <!-- EDIT: caption for photo 3 -->
-      <p>I keep this one saved for the days I need reminding of what
-      good actually looks like.</p>
+      <p>You know what's dangerous about you? The more I talk to you, the more I want to talk to you.
+         At this point, I might actually get addicted to you</p>
     </div>
   </section>
 
@@ -105,30 +137,31 @@
     <svg class="divider" viewBox="0 0 64 64" aria-hidden="true"><use href="#flower-blossom"/></svg>
     <p class="notes-intro">a few sweet nothings — click one open</p>
     <div class="notes-grid">
-      <!-- EDIT: each button is one note. Change the message on the back. -->
+      <!-- EDIT: each button is one note. Change the message on the back.
+           A couple use the sunflower icon on the front, just for her. -->
       <button class="note" type="button">
-        <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-blossom"/></svg></span>
-        <span class="note-face note-back">Just because you make Tuesdays feel like something.</span>
+        <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-sunflower"/></svg></span>
+        <span class="note-face note-back">Thank you for being my happy place.</span>
       </button>
       <button class="note" type="button">
         <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-blossom"/></svg></span>
-        <span class="note-face note-back">Just because your laugh is, hands down, my favorite sound.</span>
+        <span class="note-face note-back">My happily ever after is with you.</span>
       </button>
       <button class="note" type="button">
         <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-blossom"/></svg></span>
-        <span class="note-face note-back">Just because I still think about the way you said that thing that one time.</span>
+        <span class="note-face note-back">I always wake up smiling now. I think it's your fault.</span>
+      </button>
+      <button class="note" type="button">
+        <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-sunflower"/></svg></span>
+        <span class="note-face note-back">Just so you know, I would marry you all over again. </span>
       </button>
       <button class="note" type="button">
         <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-blossom"/></svg></span>
-        <span class="note-face note-back">Just because you notice things most people walk right past.</span>
+        <span class="note-face note-back">Stop making me think about you! I'm busy.</span>
       </button>
       <button class="note" type="button">
-        <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-blossom"/></svg></span>
-        <span class="note-face note-back">Just because — no other reason needed, honestly.</span>
-      </button>
-      <button class="note" type="button">
-        <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-blossom"/></svg></span>
-        <span class="note-face note-back">Just because I wanted to make you something with my own two hands.</span>
+        <span class="note-face note-front"><svg aria-hidden="true"><use href="#flower-sunflower"/></svg></span>
+        <span class="note-face note-back">I love doing life with you.</span>
       </button>
     </div>
   </section>
@@ -168,7 +201,7 @@
   </section>
 
   <section class="closing">
-    <svg class="divider" viewBox="0 0 64 64" aria-hidden="true"><use href="#flower-blossom"/></svg>
+    <svg class="divider divider-sunflower" viewBox="0 0 100 100" aria-hidden="true"><use href="#flower-sunflower"/></svg>
     <!-- EDIT: your closing message -->
     <p class="closing-line">That's it. That's the whole site.</p>
     <p class="closing-line closing-line-small">I just wanted you to know you're loved, on a random
