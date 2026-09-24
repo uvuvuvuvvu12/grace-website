@@ -352,11 +352,40 @@ main {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero-eyebrow, .hero-title span, .hero-sub, .hero-scroll {
-    animation: none;
-    opacity: 1;
-    filter: none;
-    transform: none;
+    animation: none; opacity: 1; filter: none; transform: none;
   }
   .hero-scroll span { animation: none; opacity: 1; top: 0; }
   .photo { transform: none !important; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== Scroll reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(3px);
+  transition: opacity .9s cubic-bezier(.4,.2,.2,1),
+              transform .9s cubic-bezier(.4,.2,.2,1),
+              filter .9s cubic-bezier(.4,.2,.2,1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* stagger photo vs text slightly within a story-item */
+.story-item .story-text.reveal { transition-delay: .12s; }
+
+/* gentle parallax drift on the photo while scrolling */
+.photo-wrap { overflow: hidden; }
+.photo {
+  transform: translateY(var(--parallax, 0));
+  transition: transform .1s ease-in-out;
 }

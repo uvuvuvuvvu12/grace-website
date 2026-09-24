@@ -5,6 +5,28 @@ document.querySelectorAll(".note").forEach((note) => {
   });
 });
 
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Subtle parallax on photos
+  const photos = document.querySelectorAll('.photo');
+  window.addEventListener('scroll', () => {
+    const vh = window.innerHeight;
+    photos.forEach(photo => {
+      const rect = photo.parentElement.getBoundingClientRect();
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh;
+      photo.style.setProperty('--parallax', `${progress * -18}px`);
+    });
+  }, { passive: true });
+
 // Gentle parallax on the story photos as you scroll.
 // Skipped entirely if the visitor prefers reduced motion.
 const prefersReducedMotion = window.matchMedia(
