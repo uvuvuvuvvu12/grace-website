@@ -31,11 +31,11 @@ body {
   font-family: var(--sans);
   line-height: 1.6;
   overflow-x: hidden;
-  background-image: url('images/bg.jpg');
+  /*background-image: url('images/bg.jpg');
   background-size: fill;
-  /* background-position: center; */
+  background-position: center; 
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed;*/
 }
 
 img { max-width: 100%; display: block; }
